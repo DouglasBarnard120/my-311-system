@@ -1,0 +1,19 @@
+name: Install Power Platform CLI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  install-pac-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Power Platform CLI
+        uses: microsoft/powerplatform-build-tools/actions/install-powerplatform-tools@v1
+
+      - name: Verify PAC CLI installation
+        run: pac --version
