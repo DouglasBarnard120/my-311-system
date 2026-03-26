@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Track the status of your City 311 service request by reference number." />
+  <title>Track Your Request – City 311</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <div class="container header-inner">
+      <div class="site-brand">
+        <div class="logo-icon" aria-hidden="true">🏛️</div>
+        <div>
+          <h1>City 311</h1>
+          <span>Citizen Services Portal</span>
+        </div>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="submit-request.html" class="nav-cta">Submit Request</a></li>
+          <li><a href="track-request.html" class="active">Track Request</a></li>
+          <li><a href="my-requests.html">My Requests</a></li>
+          <li><a href="knowledge-base.html">Help &amp; FAQ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container" style="max-width:760px;padding:2.5rem 1.25rem">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem;font-size:.9rem;color:var(--muted)">
+        <a href="index.html">Home</a> › Track Request
+      </nav>
+
+      <h2 class="section-title" style="margin-bottom:.4rem">🔍 Track Your Request</h2>
+      <p style="color:var(--muted);margin-bottom:2rem">
+        Enter your reference number below to check the current status of your service request.
+        Reference numbers follow the format <strong>SR-XXXXX</strong>.
+      </p>
+
+      <!-- Search card -->
+      <div class="card mb-4">
+        <form id="tracker-form" novalidate>
+          <label for="track-ref" style="font-size:1rem">Reference Number</label>
+          <div style="display:flex;gap:.75rem;margin-top:.5rem;flex-wrap:wrap">
+            <div class="search-wrap" style="flex:1;min-width:200px">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="track-ref" name="ref"
+                placeholder="SR-12345"
+                aria-label="Request reference number"
+                pattern="SR-\d{5}"
+                style="text-transform:uppercase" />
+            </div>
+            <button type="submit" class="btn btn-primary">Check Status</button>
+          </div>
+          <p class="form-hint" style="margin-top:.5rem">
+            Don't have a reference number? <a href="my-requests.html">View your submitted requests</a>.
+          </p>
+        </form>
+      </div>
+
+      <!-- Result panel -->
+      <div class="tracker-result" role="region" aria-label="Request status result">
+
+        <!-- Header -->
+        <div class="card mb-3" style="border-left:4px solid var(--accent)">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem">
+            <div>
+              <p style="font-size:.85rem;color:var(--muted);margin-bottom:.25rem">Reference Number</p>
+              <h3 id="result-ref" style="font-size:1.4rem;font-family:monospace">SR-00000</h3>
+            </div>
+            <span id="result-status" class="badge badge-progress" style="font-size:.9rem;padding:.4rem 1rem">In Progress</span>
+          </div>
+          <hr style="border:none;border-top:1px solid var(--border);margin:1rem 0" />
+          <h3 id="result-title" style="margin-bottom:.3rem">—</h3>
+          <p id="result-category" style="color:var(--muted);font-size:.9rem">—</p>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="card mb-3">
+          <h4 style="margin-bottom:1rem">Progress</h4>
+          <div class="progress-steps" role="list">
+            <div class="progress-step" role="listitem">
+              <div class="step-dot"></div>
+              <div class="step-label">New</div>
+            </div>
+            <div class="progress-step" role="listitem">
+              <div class="step-dot"></div>
+              <div class="step-label">Assigned</div>
+            </div>
+            <div class="progress-step" role="listitem">
+              <div class="step-dot"></div>
+              <div class="step-label">In Progress</div>
+            </div>
+            <div class="progress-step" role="listitem">
+              <div class="step-dot"></div>
+              <div class="step-label">Resolved</div>
+            </div>
+            <div class="progress-step" role="listitem">
+              <div class="step-dot"></div>
+              <div class="step-label">Closed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Details grid -->
+        <div class="card-grid" style="grid-template-columns:1fr 1fr;margin-bottom:1.5rem">
+          <div class="card" style="padding:1.25rem">
+            <p style="font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.25rem">Submitted</p>
+            <p id="result-submitted" style="font-weight:600">—</p>
+          </div>
+          <div class="card" style="padding:1.25rem">
+            <p style="font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.25rem">Last Updated</p>
+            <p id="result-updated" style="font-weight:600">—</p>
+          </div>
+          <div class="card" style="padding:1.25rem">
+            <p style="font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.25rem">Department</p>
+            <p id="result-dept" style="font-weight:600">—</p>
+          </div>
+          <div class="card" style="padding:1.25rem">
+            <p style="font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.25rem">Estimated Resolution</p>
+            <p id="result-eta" style="font-weight:600">—</p>
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="card mb-3">
+          <h4 style="margin-bottom:.75rem">Status Notes</h4>
+          <p id="result-notes" style="color:var(--muted)">—</p>
+          <hr style="border:none;border-top:1px solid var(--border);margin:1rem 0" />
+          <p style="font-size:.85rem;color:var(--muted)">
+            Assigned to: <strong id="result-worker">—</strong>
+          </p>
+        </div>
+
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="submit-request.html" class="btn btn-outline">Submit Another Request</a>
+          <button type="button" onclick="window.print()" class="btn btn-outline">🖨️ Print Status</button>
+        </div>
+      </div>
+
+      <!-- Info panel when no search yet -->
+      <div class="card mt-3" style="background:var(--bg)">
+        <h4 style="margin-bottom:.75rem">💡 What do the statuses mean?</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem">
+          <li><span class="badge badge-new">New</span> &nbsp;Request received and pending assignment.</li>
+          <li><span class="badge badge-assigned">Assigned</span> &nbsp;Assigned to a department or crew.</li>
+          <li><span class="badge badge-progress">In Progress</span> &nbsp;Actively being worked on.</li>
+          <li><span class="badge badge-resolved">Resolved</span> &nbsp;Work completed, awaiting your confirmation.</li>
+          <li><span class="badge badge-closed">Closed</span> &nbsp;Request fully closed.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>🏛️ City 311</h4>
+          <p style="font-size:.88rem;margin-bottom:.75rem">Your city's non-emergency service request portal.</p>
+          <p style="font-size:.88rem">📞 Call: <a href="tel:311">311</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="submit-request.html">Submit Request</a></li>
+            <li><a href="my-requests.html">My Requests</a></li>
+            <li><a href="knowledge-base.html">Help &amp; FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 City 311 Citizen Services Portal. For life-threatening emergencies, call <strong>911</strong>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container" aria-live="polite"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
