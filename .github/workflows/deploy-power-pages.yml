@@ -1,0 +1,37 @@
+name: Deploy Power Pages Solution
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'solution/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  ENVIRONMENT_URL: https://org74e4d1d8.crm.dynamics.com/
+  SOLUTION_FILE: solution/PowerPagesSolution.zip
+
+jobs:
+  deploy:
+    name: Import solution to Power Platform
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Import solution to Power Platform
+        uses: microsoft/powerplatform-actions/import-solution@v1
+        with:
+          environment-url: ${{ env.ENVIRONMENT_URL }}
+          app-id: ${{ secrets.POWER_PLATFORM_SP_APP_ID }}
+          client-secret: ${{ secrets.POWER_PLATFORM_SP_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.POWER_PLATFORM_TENANT_ID }}
+          solution-file: ${{ env.SOLUTION_FILE }}
+          run-asynchronously: true
+          publish-changes: true
+          skip-dependency-check: false
