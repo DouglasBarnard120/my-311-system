@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My 311 System — City Service Requests</title>
+  <meta name="description" content="Submit and track non-emergency city service requests online." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-badge">311</span>
+      City Services
+    </div>
+    <nav>
+      <a href="#" data-view="home"     class="active">Home</a>
+      <a href="#" data-view="submit">Submit Request</a>
+      <a href="#" data-view="requests">View Requests</a>
+      <a href="#" data-view="track">Track Status</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<div class="hero">
+  <h1>Report a Non-Emergency Issue</h1>
+  <p>Use our 311 portal to submit service requests for potholes, broken lights, graffiti, and more. We'll handle the rest.</p>
+  <div class="hero-actions">
+    <a href="#" class="btn btn-primary" data-goto="submit">📋 Submit a Request</a>
+    <a href="#" class="btn btn-outline" data-goto="track">🔍 Track My Request</a>
+  </div>
+</div>
+
+<!-- ===== Main Content ===== -->
+<main>
+
+  <!-- Stats Bar (always visible) -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="stat-number" id="stat-total">0</div>
+      <div class="stat-label">Total Requests</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="stat-open">0</div>
+      <div class="stat-label">Open</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="stat-inprog">0</div>
+      <div class="stat-label">In Progress</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="stat-resolved">0</div>
+      <div class="stat-label">Resolved</div>
+    </div>
+  </div>
+
+  <!-- ── HOME VIEW ── -->
+  <section class="view active" data-view="home">
+    <h2 class="section-title">How It Works</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-bottom:2rem">
+      <div style="background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:1.4rem;text-align:center">
+        <div style="font-size:2.2rem;margin-bottom:.5rem">📋</div>
+        <strong>1. Submit</strong>
+        <p style="font-size:.9rem;color:#6b7a8d;margin-top:.3rem">Fill out a quick form describing the issue and its location.</p>
+      </div>
+      <div style="background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:1.4rem;text-align:center">
+        <div style="font-size:2.2rem;margin-bottom:.5rem">🔖</div>
+        <strong>2. Get a Reference</strong>
+        <p style="font-size:.9rem;color:#6b7a8d;margin-top:.3rem">Receive a unique reference number to track your request.</p>
+      </div>
+      <div style="background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:1.4rem;text-align:center">
+        <div style="font-size:2.2rem;margin-bottom:.5rem">🔍</div>
+        <strong>3. Track Progress</strong>
+        <p style="font-size:.9rem;color:#6b7a8d;margin-top:.3rem">Check the status of your request anytime using its ID.</p>
+      </div>
+      <div style="background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:1.4rem;text-align:center">
+        <div style="font-size:2.2rem;margin-bottom:.5rem">✅</div>
+        <strong>4. Resolution</strong>
+        <p style="font-size:.9rem;color:#6b7a8d;margin-top:.3rem">We work on the issue and update the status once resolved.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Common Request Types</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.8rem">
+      <button class="btn btn-outline" style="color:var(--text);border-color:var(--border);background:#fff;justify-content:flex-start" data-goto="submit">🛣️ Pothole</button>
+      <button class="btn btn-outline" style="color:var(--text);border-color:var(--border);background:#fff;justify-content:flex-start" data-goto="submit">💡 Street Light</button>
+      <button class="btn btn-outline" style="color:var(--text);border-color:var(--border);background:#fff;justify-content:flex-start" data-goto="submit">🎨 Graffiti</button>
+      <button class="btn btn-outline" style="color:var(--text);border-color:var(--border);background:#fff;justify-content:flex-start" data-goto="submit">🗑️ Illegal Dumping</button>
+      <button class="btn btn-outline" style="color:var(--text);border-color:var(--border);background:#fff;justify-content:flex-start" data-goto="submit">🌳 Fallen Tree</button>
+      <button class="btn btn-outline" style="color:var(--text);border-color:var(--border);background:#fff;justify-content:flex-start" data-goto="submit">💧 Water Issue</button>
+    </div>
+  </section>
+
+  <!-- ── SUBMIT VIEW ── -->
+  <section class="view" data-view="submit">
+    <h2 class="section-title">Submit a Service Request</h2>
+    <div class="form-card">
+      <form id="submit-form" novalidate>
+
+        <div class="form-group">
+          <label for="category">Issue Category <span class="required">*</span></label>
+          <select id="category" name="category" required>
+            <option value="" disabled selected>Select a category…</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="desc">Description <span class="required">*</span></label>
+          <textarea id="desc" name="description" maxlength="500" placeholder="Describe the issue in detail…" required></textarea>
+          <div class="char-count" id="char-count">0 / 500</div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Location / Address <span class="required">*</span></label>
+          <input type="text" id="address" name="address" placeholder="e.g. 123 Main St, Corner of Oak & 5th" required />
+        </div>
+
+        <h3 style="font-size:1rem;margin-bottom:.8rem;margin-top:1.4rem;color:var(--muted)">Contact Information (optional)</h3>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Submit Request →</button>
+          <button type="reset" class="btn btn-outline" style="color:var(--muted);border-color:var(--border)">Clear</button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- ── REQUESTS VIEW ── -->
+  <section class="view" data-view="requests">
+    <h2 class="section-title">All Service Requests</h2>
+
+    <div class="filters-bar">
+      <input type="text" id="filter-search" placeholder="🔍 Search requests…" />
+      <select id="filter-status">
+        <option value="all">All Statuses</option>
+        <option value="open">Open</option>
+        <option value="in-progress">In Progress</option>
+        <option value="resolved">Resolved</option>
+        <option value="closed">Closed</option>
+      </select>
+      <select id="filter-category"></select>
+    </div>
+
+    <div class="requests-list" id="requests-list">
+      <div class="empty-state">
+        <div class="empty-icon">📭</div>
+        <p>No requests have been submitted yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRACK VIEW ── -->
+  <section class="view" data-view="track">
+    <h2 class="section-title">Track a Request</h2>
+    <div class="track-card">
+      <form id="track-form">
+        <div class="form-group">
+          <label for="track-id">Enter your Reference Number</label>
+          <input type="text" id="track-id" placeholder="e.g. 311-ABC123-XY45" required
+                 style="font-family:monospace;font-size:1rem;letter-spacing:.5px" />
+        </div>
+        <button type="submit" class="btn btn-primary">Look Up →</button>
+      </form>
+    </div>
+    <div class="track-result" id="track-result"></div>
+  </section>
+
+</main>
+
+<!-- ===== Success Modal ===== -->
+<div class="modal-overlay" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+    <div class="success-icon">🎉</div>
+    <h2 id="modal-title">Request Submitted!</h2>
+    <p>Your service request has been received. Use the reference number below to track its progress.</p>
+    <div class="ref-number" id="success-ref"></div>
+    <p style="font-size:.85rem;color:var(--muted)">Please save this number — you'll need it to track your request.</p>
+    <div style="display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap">
+      <button class="btn btn-secondary" id="modal-view-requests">View All Requests</button>
+      <button class="btn btn-outline" style="color:var(--muted);border-color:var(--border)" id="modal-close2">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Toast ===== -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <p>My 311 System &nbsp;·&nbsp; Non-Emergency City Services &nbsp;·&nbsp;
+    For emergencies call <a href="tel:911">911</a></p>
+</footer>
+
+<script src="app.js"></script>
+<script>
+  // Extra modal close button
+  document.getElementById('modal-close2').addEventListener('click', () => {
+    document.getElementById('success-modal').classList.remove('open');
+  });
+</script>
+</body>
+</html>
