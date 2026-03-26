@@ -1,0 +1,123 @@
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h2>Report It. Track It. Resolved.</h2>
+        <p>Submit non-emergency service requests, track their progress, and connect with your city—24 hours a day, 7 days a week.</p>
+        <div class="hero-actions">
+          <a href="/submit-request" class="btn btn-white btn-lg">📝 Submit a Request</a>
+          <a href="/track-request" class="btn btn-lg" style="background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.5)">🔍 Track Status</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">12,847</div>
+            <div class="stat-lbl">Requests This Year</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">94%</div>
+            <div class="stat-lbl">Resolved On Time</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3.2 days</div>
+            <div class="stat-lbl">Average Resolution</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">4.7 ★</div>
+            <div class="stat-lbl">Citizen Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service Categories -->
+    <section class="container" style="padding:3rem 1.25rem">
+      <div class="section-header text-center">
+        <h2 class="section-title">What Can We Help With?</h2>
+        <p class="section-sub">Select a category to start your request</p>
+      </div>
+      <div class="card-grid">
+        <div class="service-card" data-category="roads">
+          <div class="icon">🛣️</div>
+          <h3>Roads &amp; Sidewalks</h3>
+          <p>Potholes, street lights, road damage, and sidewalk repairs</p>
+        </div>
+        <div class="service-card" data-category="sanitation">
+          <div class="icon">🗑️</div>
+          <h3>Trash &amp; Sanitation</h3>
+          <p>Missed pickups, illegal dumping, recycling, and bulk items</p>
+        </div>
+        <div class="service-card" data-category="parks">
+          <div class="icon">🌳</div>
+          <h3>Parks &amp; Recreation</h3>
+          <p>Park maintenance, damaged equipment, graffiti, and trees</p>
+        </div>
+        <div class="service-card" data-category="noise">
+          <div class="icon">📢</div>
+          <h3>Noise Complaints</h3>
+          <p>Loud music, construction noise, and animal disturbances</p>
+        </div>
+        <div class="service-card" data-category="utilities">
+          <div class="icon">💧</div>
+          <h3>Water &amp; Utilities</h3>
+          <p>Water leaks, sewer issues, street flooding, and power</p>
+        </div>
+        <div class="service-card" data-category="other">
+          <div class="icon">💬</div>
+          <h3>Other Services</h3>
+          <p>General inquiries, complaints, compliments, and more</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section style="background:var(--card);padding:3rem 0;border-top:1px solid var(--border)">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">How It Works</h2>
+          <p class="section-sub">Three simple steps to get your issue resolved</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h4>Submit a Request</h4>
+            <p>Describe the issue, add a photo, and include your location</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h4>We Assign It</h4>
+            <p>Your request is routed to the right department automatically</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h4>Track &amp; Resolve</h4>
+            <p>Follow real-time updates until the issue is closed</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Track -->
+    <section class="container" style="padding:3rem 1.25rem">
+      <div class="card" style="max-width:600px;margin:0 auto">
+        <h2 style="font-size:1.3rem;margin-bottom:1rem">🔍 Quick Status Check</h2>
+        <form id="quick-track-form" style="display:flex;gap:.75rem;flex-wrap:wrap">
+          <div style="flex:1;min-width:200px">
+            <input type="text" placeholder="Enter reference number (SR-XXXXX)" aria-label="Reference number" id="quick-ref" />
+          </div>
+          <button type="submit" class="btn btn-primary">Check Status</button>
+        </form>
+      </div>
+    </section>
+
+    <script>
+      document.getElementById('quick-track-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var ref = document.getElementById('quick-ref').value.trim();
+        if (ref) location.href = '/track-request?ref=' + encodeURIComponent(ref.toUpperCase());
+      });
+    </script>

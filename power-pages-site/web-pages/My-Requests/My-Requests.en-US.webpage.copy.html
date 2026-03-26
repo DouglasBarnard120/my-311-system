@@ -1,0 +1,41 @@
+    <div class="container" style="padding:2.5rem 1.25rem">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem;font-size:.9rem;color:var(--muted)">
+        <a href="/">Home</a> › My Requests
+      </nav>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem">
+        <div>
+          <h2 class="section-title" style="margin-bottom:.25rem">📋 My Requests</h2>
+          <p style="color:var(--muted)">Requests submitted from this browser session</p>
+        </div>
+        <a href="/submit-request" class="btn btn-primary">+ New Request</a>
+      </div>
+
+      <div class="alert alert-info mb-3">
+        <span>ℹ️</span>
+        <span>
+          Requests shown here were submitted from this browser. To access requests submitted from
+          another device, use the <a href="/track-request">Track Request</a> page with your reference number.
+        </span>
+      </div>
+
+      <!-- Request grid populated by JS -->
+      <div id="my-requests-grid" class="card-grid"></div>
+
+      <!-- Clear button -->
+      <div style="margin-top:2rem;text-align:right">
+        <button id="clear-requests" class="btn btn-sm" style="color:var(--danger);border-color:var(--danger);background:none">
+          🗑️ Clear Local History
+        </button>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('clear-requests').addEventListener('click', function () {
+        if (confirm('Clear all locally stored request history from this browser?')) {
+          localStorage.removeItem('311_requests');
+          location.reload();
+        }
+      });
+    </script>

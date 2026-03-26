@@ -1,0 +1,91 @@
+adx_name: Base Template
+adx_mimetype: text/html
+adx_websiteid:
+  adx_name: City 311 Citizen Services Portal
+adx_source: |
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{ page.description | default: 'City 311 Citizen Services Portal' }}" />
+    <title>{{ page.adx_title | default: page.title | default: 'City 311 Citizen Services' }}</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header>
+      <div class="container header-inner">
+        <div class="site-brand">
+          <div class="logo-icon" aria-hidden="true">🏛️</div>
+          <div>
+            <h1>City 311</h1>
+            <span>Citizen Services Portal</span>
+          </div>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav aria-label="Primary navigation">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/submit-request" class="nav-cta">Submit Request</a></li>
+            <li><a href="/track-request">Track Request</a></li>
+            <li><a href="/my-requests">My Requests</a></li>
+            <li><a href="/help">Help &amp; FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      {{ page.adx_copy }}
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>🏛️ City 311</h4>
+            <p style="font-size:.88rem;margin-bottom:.75rem">Your city's non-emergency service request portal. Available 24/7.</p>
+            <p style="font-size:.88rem">📞 Call: <a href="tel:311">311</a></p>
+          </div>
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="/submit-request">Submit Request</a></li>
+              <li><a href="/track-request">Track Request</a></li>
+              <li><a href="/my-requests">My Requests</a></li>
+              <li><a href="/help">Help &amp; FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Departments</h4>
+            <ul>
+              <li><a href="#">Public Works</a></li>
+              <li><a href="#">Sanitation</a></li>
+              <li><a href="#">Parks &amp; Rec</a></li>
+              <li><a href="#">Utilities</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>City Resources</h4>
+            <ul>
+              <li><a href="#">City Website</a></li>
+              <li><a href="#">Council Meetings</a></li>
+              <li><a href="#">Emergency Services</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 City 311 Citizen Services Portal. For life-threatening emergencies, call <strong>911</strong>.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="toast-container" aria-live="polite"></div>
+    <script src="/js/app.js"></script>
+  </body>
+  </html>

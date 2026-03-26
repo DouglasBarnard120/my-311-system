@@ -24,12 +24,25 @@ site/
 └── js/
     └── app.js            # Application logic (vanilla JS)
 
+power-pages-site/         # Power Pages (pac CLI) deployment package
+├── website.yml           # Site metadata
+├── page-templates/       # Page template configuration
+├── web-templates/        # Liquid HTML templates (header/footer layout)
+├── web-files/            # Static assets (CSS, JS) with pac metadata
+└── web-pages/            # One subfolder per page (YAML + copy HTML)
+    ├── Home/
+    ├── Submit-Request/
+    ├── Track-Request/
+    ├── My-Requests/
+    └── Help-and-FAQ/
+
 .github/
 └── workflows/
-    └── deploy-pages.yml  # GitHub Actions → GitHub Pages CD pipeline
+    ├── deploy-pages.yml        # GitHub Actions → GitHub Pages CD pipeline
+    └── deploy-power-pages.yml  # GitHub Actions → Power Pages CD pipeline
 ```
 
-## Deploying to GitHub Pages
+## Deploying to GitHub Pages (static hosting alternative)
 
 ### Automatic deployment (recommended)
 
@@ -69,6 +82,53 @@ npx serve site
 ```
 
 Then visit `http://localhost:8080`.
+
+## Deploying to Power Pages (Power Apps)
+
+The `Deploy 311 Portal to Power Pages` workflow uses the Power Platform CLI (`pac`) to upload the
+`power-pages-site/` content to the Dataverse environment at
+`https://org74e4d1d8.crm.dynamics.com/`.
+
+### Prerequisites
+
+1. **Create a Power Pages site** in your environment first.
+   Go to [Power Pages](https://make.powerpages.microsoft.com/), select your environment
+   (`org74e4d1d8`), and create a blank site named **City 311 Citizen Services Portal**.
+   This site must exist in Dataverse before the workflow can upload content to it.
+
+2. **Register an Azure AD application** (service principal) with the **Dynamics CRM** permission
+   (`user_impersonation`) and grant it the **System Administrator** role in your Power Platform
+   environment.
+
+3. **Add three secrets** to this GitHub repository
+   (`Settings → Secrets and variables → Actions → New repository secret`):
+
+   | Secret name        | Value                                          |
+   |--------------------|------------------------------------------------|
+   | `PP_APP_ID`        | Application (client) ID of the service principal |
+   | `PP_CLIENT_SECRET` | Client secret generated for that application   |
+   | `PP_TENANT_ID`     | Directory (tenant) ID of your Azure AD         |
+
+### Automatic deployment
+
+Push a commit that changes any file under `site/` or `power-pages-site/` to the `main` branch.
+The `Deploy 311 Portal to Power Pages` workflow runs automatically.
+
+### Manual trigger
+
+Navigate to **Actions → Deploy 311 Portal to Power Pages → Run workflow** and click **Run**.
+
+### Page URLs after deployment
+
+| Page             | Power Pages URL         |
+|------------------|-------------------------|
+| Home             | `/`                     |
+| Submit a Request | `/submit-request`       |
+| Track Request    | `/track-request`        |
+| My Requests      | `/my-requests`          |
+| Help & FAQ       | `/help`                 |
+
+---
 
 ## Connecting to a real backend
 

@@ -1,0 +1,239 @@
+    <div class="container" style="padding:2.5rem 1.25rem">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem;font-size:.9rem;color:var(--muted)">
+        <a href="/">Home</a> › Help &amp; FAQ
+      </nav>
+
+      <h2 class="section-title" style="margin-bottom:.4rem">❓ Help &amp; Frequently Asked Questions</h2>
+      <p style="color:var(--muted);margin-bottom:2rem">
+        Find answers to common questions or browse service guides below.
+      </p>
+
+      <!-- Search -->
+      <div class="card mb-4">
+        <label for="kb-search" class="visually-hidden">Search help articles</label>
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="search" id="kb-search" placeholder="Search help articles… (e.g. pothole, pickup, complaint)" aria-label="Search help articles" />
+        </div>
+      </div>
+
+      <div id="kb-no-results" style="display:none" class="alert alert-warning mb-3">
+        <span>⚠️</span><span>No articles match your search. Try different keywords or <a href="/submit-request">submit a request</a>.</span>
+      </div>
+
+      <!-- Articles grid -->
+      <div class="card-grid mb-4">
+
+        <div class="card kb-article" style="border-top:3px solid var(--accent)">
+          <p style="font-size:1.8rem;margin-bottom:.5rem">🛣️</p>
+          <h3 style="margin-bottom:.5rem;font-size:1rem">Reporting Road Issues</h3>
+          <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">
+            How to report potholes, damaged sidewalks, broken street lights, and other road-related problems.
+          </p>
+          <ul style="font-size:.88rem;color:var(--muted);padding-left:1.2rem;line-height:1.8">
+            <li>Include the exact street address or cross-streets</li>
+            <li>Estimate the size (e.g. 12-inch-wide pothole)</li>
+            <li>Note any immediate safety hazards</li>
+            <li>Attach a photo for faster processing</li>
+          </ul>
+          <div class="mt-2">
+            <a href="/submit-request?category=roads" class="btn btn-outline btn-sm">Report a Road Issue</a>
+          </div>
+        </div>
+
+        <div class="card kb-article" style="border-top:3px solid var(--success)">
+          <p style="font-size:1.8rem;margin-bottom:.5rem">🗑️</p>
+          <h3 style="margin-bottom:.5rem;font-size:1rem">Trash &amp; Pickup Issues</h3>
+          <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">
+            What to do if your trash or recycling was missed, or to report illegal dumping.
+          </p>
+          <ul style="font-size:.88rem;color:var(--muted);padding-left:1.2rem;line-height:1.8">
+            <li>Report missed pickup within 24 hours of collection day</li>
+            <li>For bulk items, schedule a special pickup in advance</li>
+            <li>Illegal dumping: include precise location and description</li>
+            <li>Recycling contamination may delay collection</li>
+          </ul>
+          <div class="mt-2">
+            <a href="/submit-request?category=sanitation" class="btn btn-outline btn-sm">Report Sanitation Issue</a>
+          </div>
+        </div>
+
+        <div class="card kb-article" style="border-top:3px solid var(--warning)">
+          <p style="font-size:1.8rem;margin-bottom:.5rem">📢</p>
+          <h3 style="margin-bottom:.5rem;font-size:1rem">Noise Complaints</h3>
+          <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">
+            Guide to reporting excessive noise from music, construction, or animals.
+          </p>
+          <ul style="font-size:.88rem;color:var(--muted);padding-left:1.2rem;line-height:1.8">
+            <li>Quiet hours are 10 PM – 7 AM daily</li>
+            <li>Construction noise permitted 7 AM – 8 PM weekdays</li>
+            <li>For ongoing issues, log time and frequency</li>
+            <li>Animal noise: contact animal control directly</li>
+          </ul>
+          <div class="mt-2">
+            <a href="/submit-request?category=noise" class="btn btn-outline btn-sm">File Noise Complaint</a>
+          </div>
+        </div>
+
+        <div class="card kb-article" style="border-top:3px solid var(--primary)">
+          <p style="font-size:1.8rem;margin-bottom:.5rem">💧</p>
+          <h3 style="margin-bottom:.5rem;font-size:1rem">Water &amp; Utility Issues</h3>
+          <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">
+            Reporting water main breaks, sewer backups, street flooding, and utility outages.
+          </p>
+          <ul style="font-size:.88rem;color:var(--muted);padding-left:1.2rem;line-height:1.8">
+            <li>For active water main breaks, call 311 directly</li>
+            <li>Sewer backups in your home: contact your plumber first</li>
+            <li>Street flooding: report with photos and location</li>
+            <li>Power outages: contact your electric utility</li>
+          </ul>
+          <div class="mt-2">
+            <a href="/submit-request?category=utilities" class="btn btn-outline btn-sm">Report Utility Issue</a>
+          </div>
+        </div>
+
+        <div class="card kb-article" style="border-top:3px solid #8e44ad">
+          <p style="font-size:1.8rem;margin-bottom:.5rem">🌳</p>
+          <h3 style="margin-bottom:.5rem;font-size:1rem">Parks &amp; Trees</h3>
+          <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">
+            How to report park maintenance, damaged playground equipment, graffiti, and fallen trees.
+          </p>
+          <ul style="font-size:.88rem;color:var(--muted);padding-left:1.2rem;line-height:1.8">
+            <li>Dangerous fallen trees: call 311 for urgent response</li>
+            <li>Graffiti: include photo and exact location</li>
+            <li>Broken equipment: note specific item and park name</li>
+            <li>Tree trimming requests: allow 30–60 day window</li>
+          </ul>
+          <div class="mt-2">
+            <a href="/submit-request?category=parks" class="btn btn-outline btn-sm">Report Parks Issue</a>
+          </div>
+        </div>
+
+        <div class="card kb-article" style="border-top:3px solid var(--muted)">
+          <p style="font-size:1.8rem;margin-bottom:.5rem">📞</p>
+          <h3 style="margin-bottom:.5rem;font-size:1rem">Contact &amp; Escalation</h3>
+          <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">
+            When to call 311 directly vs. using this portal, and how to escalate unresolved issues.
+          </p>
+          <ul style="font-size:.88rem;color:var(--muted);padding-left:1.2rem;line-height:1.8">
+            <li>Call 311 for urgent or time-sensitive issues</li>
+            <li>Portal requests are processed within 1–3 business days</li>
+            <li>To escalate, reply to your confirmation email</li>
+            <li>Unresolved after SLA: request supervisor review</li>
+          </ul>
+          <div class="mt-2">
+            <a href="tel:311" class="btn btn-outline btn-sm">📞 Call 311</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FAQ Accordion -->
+      <h3 class="section-title" style="font-size:1.3rem;margin-bottom:1.25rem">Frequently Asked Questions</h3>
+
+      <div class="accordion" role="list">
+
+        <div class="accordion-item kb-article" role="listitem">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="faq-1" id="faq-btn-1">
+            How long will it take to resolve my request?
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="faq-1" role="region" aria-labelledby="faq-btn-1">
+            <div class="accordion-body-inner">
+              Resolution times vary by category and priority. Typical targets are:<br><br>
+              • <strong>Emergency (safety hazard):</strong> 24 hours<br>
+              • <strong>High priority (e.g., large pothole on busy road):</strong> 3–5 business days<br>
+              • <strong>Standard (routine maintenance):</strong> 10–15 business days<br>
+              • <strong>Low priority (cosmetic issues):</strong> 30+ business days<br><br>
+              You can track your request at any time using your reference number.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item kb-article" role="listitem">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="faq-2" id="faq-btn-2">
+            I lost my reference number. What can I do?
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="faq-2" role="region" aria-labelledby="faq-btn-2">
+            <div class="accordion-body-inner">
+              If you submitted your request from this browser, check the <a href="/my-requests">My Requests</a> page.
+              If you provided an email address, check your confirmation email. Otherwise, call
+              <a href="tel:311">311</a> with details about your submission (date, location, type of request)
+              and staff can look it up for you.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item kb-article" role="listitem">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="faq-3" id="faq-btn-3">
+            Can I submit a request anonymously?
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="faq-3" role="region" aria-labelledby="faq-btn-3">
+            <div class="accordion-body-inner">
+              Yes. On the <a href="/submit-request">Submit Request</a> form, check the
+              <em>"Submit anonymously"</em> option. Note that if you submit anonymously, we will
+              not be able to send you status updates and you will need to track your request
+              manually using the reference number shown at the end of the form.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item kb-article" role="listitem">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="faq-4" id="faq-btn-4">
+            What happens if the same issue is reported multiple times?
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="faq-4" role="region" aria-labelledby="faq-btn-4">
+            <div class="accordion-body-inner">
+              Our system automatically detects duplicate reports for the same location and issue type.
+              Duplicates are merged into a single case, and all reporters are credited. Multiple reports
+              for the same issue can also increase its priority score, leading to faster resolution.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item kb-article" role="listitem">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="faq-5" id="faq-btn-5">
+            Is this portal for emergencies?
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="faq-5" role="region" aria-labelledby="faq-btn-5">
+            <div class="accordion-body-inner">
+              <strong>No.</strong> This portal is for <em>non-emergency</em> service requests only.
+              For life-threatening emergencies, fire, or active crimes, <strong>call 911 immediately</strong>.
+              For urgent but non-life-threatening city issues (active gas leak, downed power line, etc.),
+              call <a href="tel:311">311</a> directly for the fastest response.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item kb-article" role="listitem">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="faq-6" id="faq-btn-6">
+            How do I attach a photo to my request?
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="faq-6" role="region" aria-labelledby="faq-btn-6">
+            <div class="accordion-body-inner">
+              On the <a href="/submit-request">Submit Request</a> form, use the <em>Photo</em>
+              file upload field. Accepted formats are JPG, PNG, and GIF, up to 10 MB.
+              Photos are not required but are strongly encouraged — they help our crews locate and
+              assess the issue faster, often cutting resolution time in half.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Still need help -->
+      <div class="card mt-3 text-center" style="background:var(--primary);color:#fff;padding:2.5rem">
+        <h3 style="margin-bottom:.5rem;color:#fff">Still need help?</h3>
+        <p style="opacity:.85;margin-bottom:1.5rem">Our team is available Monday–Friday, 8 AM – 5 PM</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href="tel:311" class="btn btn-white">📞 Call 311</a>
+          <a href="/submit-request" class="btn btn-white" style="background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.5)">📝 Submit Request</a>
+        </div>
+      </div>
+    </div>

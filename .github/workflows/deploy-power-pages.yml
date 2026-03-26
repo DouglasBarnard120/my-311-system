@@ -1,0 +1,53 @@
+name: Deploy 311 Portal to Power Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'site/**'
+      - 'power-pages-site/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to Power Pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+
+      - name: Install Power Platform CLI
+        run: |
+          dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+          echo "$HOME/.dotnet/tools" >> "$GITHUB_PATH"
+
+      - name: Copy web assets into Power Pages site structure
+        run: |
+          mkdir -p power-pages-site/web-files/style.css
+          mkdir -p power-pages-site/web-files/app.js
+          cp site/css/style.css power-pages-site/web-files/style.css/style.css
+          cp site/js/app.js power-pages-site/web-files/app.js/app.js
+
+      - name: Authenticate to Power Platform
+        run: |
+          pac auth create \
+            --applicationId "${{ secrets.PP_APP_ID }}" \
+            --clientSecret "${{ secrets.PP_CLIENT_SECRET }}" \
+            --tenant "${{ secrets.PP_TENANT_ID }}" \
+            --environment "https://org74e4d1d8.crm.dynamics.com/"
+
+      - name: Upload Power Pages site
+        run: |
+          pac pages upload \
+            --path power-pages-site \
+            --environment "https://org74e4d1d8.crm.dynamics.com/"

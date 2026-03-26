@@ -1,0 +1,8 @@
+adx_name: Home Page
+adx_description: Default page template for the 311 portal
+adx_type: 756150000
+adx_isdefault: true
+adx_websiteid:
+  adx_name: City 311 Citizen Services Portal
+adx_webtemplateid:
+  adx_name: Base Template
